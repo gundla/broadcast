@@ -2,6 +2,9 @@ Broadcast Yourself
 =======================
 No plugins. No signups. Anonymous. Peer-to-peer.
 
+- Broadcast your slides with video/audio
+- Broadcast video
+- Broadcast screen
 
 Technologies:
 revealjs + webrtc + socket.io
