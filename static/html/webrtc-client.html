@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <script src="/static/js/vendor/jquery-1.10.2.min.js"></script> 
+       <script src="/static/js/vendor/simplewebrtc.latest.js"></script> 
+        <style>
+            #remoteVideos video {
+                height: 150px;
+            }
+            .video-wrapper {
+                height: 200px;
+                width: 400px;
+                margin: 40px auto;
+                text-align: center;
+            }
+            .page.create .works {
+                text-align: center;
+                margin-top: 0;
+                width: 400px;
+                margin: 0 auto;
+            }
+            .page.create .works .browser {
+                float: left;
+                box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                text-align: center;
+                width: 50%;
+            }
+            .hidden {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <section class="page create">
+            <div class="video-wrapper">
+                <div style="margin-bottom: 20px;">
+                    Room: <input id="room" />
+                    <button id="submit">Join Room</button>
+                </div>
+                <div id="remoteVideos" class="hidden"></div>
+            </div>
+
+            <div class="works cf"><h2>Works in</h2><div class="browser"><figure><img src="/static/images/chrome.png" height="128" width="128" alt="Chrome"></figure><figcaption>Chrome</figcaption></div><div class="browser"><figure><img src="/static/images/firefox.png" height="128" width="128" alt="Firefox"></figure><figcaption>Firefox</figcaption></div></div>
+        </section>
+        <script>
+            $(function(){
+                var socketServerUrl = window.location.protocol + window.location.host + '/videoSharing';
+                $('#room').focus();
+                $('#submit').click(function(e){
+                    e.preventDefault();
+                    var room = $('#room').val();
+                    if(room.length){
+                        var webrtc = new SimpleWebRTC({
+                            // the id/element dom element that will hold "our" video
+                            //localVideoEl: 'localVideo',
+                            // the id/element dom element that will hold remote videos
+                            remoteVideosEl: 'remoteVideos',
+                            // immediately ask for camera access
+                            autoRequestMedia: true,
+                            url: socketServerUrl,
+                            //debug: true
+                        });
+                        // we have to wait until it's ready
+                        webrtc.on('readyToCall', function () {
+                            // you can name it anything
+                            console.log('room', room)
+                            webrtc.joinRoom('room' + room);
+                        });
+
+                        $('#remoteVideos').show();
+                    }
+                })
+            })
+            
+        </script>
+    </body>
+</html>

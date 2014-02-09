@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/static/html/webrtc-style.css" >
+        <script src="/static/js/vendor/jquery-1.10.2.min.js"></script>
+        <script src="/static/js/vendor/simplewebrtc.latest.js"></script> 
+        <style>
+            #localVideo {
+                height: 150px;
+            }
+            #room {
+                margin-bottom: 10px;
+            }
+            .video-wrapper {
+                height: 200px;
+                width: 400px;
+                margin: 40px auto;
+                text-align: center;
+            }
+            .page.create .works {
+                text-align: center;
+                margin-top: 0;
+                width: 400px;
+                margin: 0 auto;
+            }
+            .page.create .works .browser {
+                float: left;
+                box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                text-align: center;
+                width: 50%;
+            }
+            .hidden {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <section class="page create">
+            <div class="video-wrapper">
+                <h2 id="room"></h2>
+                <video id="localVideo" class="hidden"></video>
+            </div>
+
+            <div class="works cf"><h2>Works in</h2><div class="browser"><figure><img src="/static/images/chrome.png" height="128" width="128" alt="Chrome"></figure><figcaption>Chrome</figcaption></div><div class="browser"><figure><img src="/static/images/firefox.png" height="128" width="128" alt="Firefox"></figure><figcaption>Firefox</figcaption></div></div>
+        </section>
+
+        <script>
+            function getRandomInt (min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            var socketServerUrl = window.location.protocol + window.location.host + '/videoSharing';
+            var webrtc = new SimpleWebRTC({
+                // the id/element dom element that will hold "our" video
+                localVideoEl: 'localVideo',
+                // immediately ask for camera access
+                autoRequestMedia: true,
+                url: socketServerUrl,
+                //debug: true
+            });
+            console.log('readyToCall before')
+            // we have to wait until it's ready
+            webrtc.on('readyToCall', function () {
+                console.log('readyToCall')
+                var room = getRandomInt(1000, 9999);
+                // you can name it anything
+                webrtc.joinRoom('room' + room);
+
+                $('#room').html('room: ' + room);
+                $('#localVideo').show();
+            });
+        </script>
+    </body>
+</html>

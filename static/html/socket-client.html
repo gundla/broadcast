@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Personal Capital - Cobrowsing</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="shortcut icon" href="/static/images/favicon.ico" />
+        <style>
+            .wrapper {
+                width: 200px;
+                margin: 0 auto;
+                text-align: center;
+                font-size: 24px;
+            }
+            #nextSlide {
+                font-size: 16px;
+                margin: 20px 0;
+                text-transform: uppercase;
+                padding: 10px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div id="slideNumber">Slide: </div>
+        </div>
+        <script type="text/javascript" src="/static/js/vendor/socket.io.min.js"></script>
+        <script type="text/javascript" src="/static/js/vendor/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript">
+            var socketServerUrl = window.location.protocol + window.location.host + '/slideSharing';
+            var socketClient = io.connect(socketServerUrl, {'connect timeout': 2500});
+            socketClient.socket.on('error', function (reason){
+              console.log('Unable to connect Socket.IO', reason);
+            });
+
+            socketClient.on('connect', function (){
+                console.log('successfully established a working connection as a client');
+                socketClient.on('test', function(data) {
+                    console.log('data', data)
+                    // ignore data from sockets that aren't ours
+                    if (data.socketId !== 'test') { return; }
+                    $('#slideNumber').html('Slide: ' + data.slide);
+                });
+            });
+        </script>
+    </body>
+</html>
