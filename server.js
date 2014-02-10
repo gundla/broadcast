@@ -23,7 +23,7 @@ function errorHandler(err, req, res, next) {
   logger.error('500: ' + req.path);
 
   res.status(500);
-  res.redirect('/static/html/404.html');
+  //res.redirect('/static/html/404.html');
   next(err);
 }
 
@@ -54,8 +54,8 @@ app.configure(function(){
   app.use(function(req, res){
     logger.error('404: ' + req.path);
 
-    res.status(404);
-    res.redirect('/static/html/404.html');
+    res.status(404).sendfile(__dirname + '/static/html/404.html');
+    //res.redirect('/static/html/404.html');
   });
 
   //error handling
@@ -96,6 +96,13 @@ app.all('/socket.io/1/*', function(req, res, next) {
   next();
 });
 
+app.post('/token', function(req,res) {
+  var ts = new Date().getTime();
+  var rand = Math.floor(Math.random()*9999999);
+  var secret = ts.toString() + rand.toString();
+  res.send({secret: secret, socketId: utils.createHash(secret)});
+});
+
 // start the app
 var server = app.listen(app.locals.port, function(){
   console.log("Express server listening on port %d in %s mode", app.locals.port, app.settings.env);
@@ -119,14 +126,3 @@ slideSharingSocket.on('connection', function(client){
 videoSharingSocket.on('connection', function(client){
   videoSharing.init(client, videoSharingSocket);
 });
-
-
-
-/*socketio.sockets.on('connection', function(client) {
-
-  console.log('client', client.manager)
-
-  slideSharing.init(client);
-  videoSharing.init(client, socketio);
-
-});*/

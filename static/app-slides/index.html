@@ -5,21 +5,28 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
-  <title>Broadcast</title>
+  <title>Broadcast Slides</title>
 
   <!-- Application styles. -->
   <!-- build:[href] /styles.min.css -->
-  <link rel="stylesheet" href="/static/styles/css/main.css">
+  <link rel="stylesheet" href="/static/styles/css/slides.css">
   <!-- /build -->
+
+  <!--[if lt IE 9]>
+    <script src="/static/vendor/reveal/html5shiv.js"></script>
+  <![endif]-->
 </head>
 
 <body>
   <!-- Application container. -->
-  <div id="main"></div>
+  <div id="header">
+    <a target="_blank">Link for others to view</a>
+  </div>
+  <div id="slides" class="reveal"></div>
 
   <!-- Application source. -->
   <!-- build:[src] /source.min.js -->
-  <script data-main="/static/app/main" src="/static/vendor/requirejs/require.js"></script>
+  <script data-main="/static/app-slides/main" src="/static/vendor/requirejs/require.js"></script>
   <!-- /build -->
 </body>
 </html>

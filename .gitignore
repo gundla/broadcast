@@ -21,3 +21,4 @@ npm-debug.log
 /public/stylesheets/.sass-cache/
 /.sass-cache/
 node_modules
+static/styles/.sass-cache
