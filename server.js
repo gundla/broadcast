@@ -34,7 +34,13 @@ app.configure(function(){
   //fix ip for logs
   app.enable('trust proxy');
 
-  app.use(express.bodyParser());
+  app.set('views', __dirname + '/views');
+  app.set('view engine', 'jade');
+  app.engine('jade', require('jade').__express);
+
+  app.use(express.json());
+  app.use(express.urlencoded());
+
   app.use(express.methodOverride());
 
   //access logs
@@ -66,22 +72,18 @@ app.configure(function(){
 // custom configurations for environment
 app.configure('local', function(){
   _.extend(app.locals, config.local);
-  logger.transports.file.dirname = app.locals.logDirectory;
 });
 
 app.configure('development', function(){
  _.extend(app.locals, config.dev);
-  logger.transports.file.dirname = app.locals.logDirectory;
 });
 
 app.configure('qa', function(){
   _.extend(app.locals, config.qa);
-  logger.transports.file.dirname = app.locals.logDirectory;
 });
 
 app.configure('production', function(){
   _.extend(app.locals, config.prod);
-  logger.transports.file.dirname = app.locals.logDirectory;
 });
 
 // is a route polled by apache to verify node server is running
@@ -96,12 +98,18 @@ app.all('/socket.io/1/*', function(req, res, next) {
   next();
 });
 
-app.post('/token', function(req,res) {
+app.post('/token', function(req, res) {
   var ts = new Date().getTime();
   var rand = Math.floor(Math.random()*9999999);
   var secret = ts.toString() + rand.toString();
   res.send({secret: secret, socketId: utils.createHash(secret)});
 });
+
+app.get('/slides*', function(req, res){
+  console.log('slides')
+  res.render('slides');
+});
+
 
 // start the app
 var server = app.listen(app.locals.port, function(){
@@ -120,7 +128,7 @@ slideSharingSocket = socketio.of('/slideSharing');
 videoSharingSocket = socketio.of('/videoSharing');
 
 slideSharingSocket.on('connection', function(client){
-  slideSharing.init(client);
+  slideSharing.init(client, slideSharingSocket);
 });
 
 videoSharingSocket.on('connection', function(client){

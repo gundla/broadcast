@@ -9,6 +9,7 @@
 
   <!-- Application styles. -->
   <!-- build:[href] /styles.min.css -->
+  <link rel="stylesheet" href="/static/styles/css/bootstrap.css">
   <link rel="stylesheet" href="/static/styles/css/slides.css">
   <!-- /build -->
 
@@ -19,8 +20,18 @@
 
 <body>
   <!-- Application container. -->
-  <div id="header">
-    <a target="_blank">Link for others to view</a>
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <div class="broadcastingDetails right">
+          <div class="left">
+            <h4>Broadcast Link</h4>
+            <a id="broadcastLink" target="_blank"></a>
+          </div>
+          <div id="numberOfClients" class="left">0</div>
+        </div>
+      </div>
+    </div>
   </div>
   <div id="slides" class="reveal"></div>
 

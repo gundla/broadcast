@@ -31,7 +31,7 @@ var logger = module.exports = new (winston.Logger)({
     }),
     //write to a file
     new (winston.transports.File)({
-      filename: '/mnt/nodejs/logs/www_main.log'
+      filename: 'all-logs.log'
       , maxsize: '20971520'   // 20MB
       , maxFiles: 10
       , json: false

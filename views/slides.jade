@@ -1,0 +1,19 @@
+extends layout
+block content
+	div(class="navbar navbar-inverse navbar-fixed-top hidden")
+		.container
+			.navbar-header
+				a#startBroadcasting.button.primary.hidden(href="/slides/present") Start Broadcast
+				div.broadcastingDetails.right.hidden
+					.left
+						h4
+							span Broadcasting @ 
+							a#broadcastLink(target="_blank")
+						a#stopBroadcasting.button.cancel(href="/slides/view") Stop Broadcast
+					#numberOfClients.left 0
+	#slides.reveal
+
+	script(data-main="/static/app-slides/main", src="/static/vendor/requirejs/require.js")
+
+block stylesheets
+	link(rel='stylesheet', href='/static/styles/css/slides.css')

@@ -2,8 +2,9 @@ define([
     'jquery',
     'underscore',
     'backbone',
+    'reveal',
     'scripts/modules/slides/slidesView'
-  ], function($, _, Backbone, SlidesView) {
+  ], function($, _, Backbone, Reveal, SlidesView) {
 
   // Defining the application router.
   var router = Backbone.Router.extend({
@@ -17,7 +18,6 @@ define([
         action = 'view';
       }
       action = action.split('?')[0];
-      console.log('action', action)
       new SlidesView({action: action});
     }
   });

@@ -9,14 +9,34 @@
 
   <!-- Application styles. -->
   <!-- build:[href] /styles.min.css -->
+  <link rel="stylesheet" href="/static/styles/css/bootstrap.css">
   <link rel="stylesheet" href="/static/styles/css/main.css">
   <!-- /build -->
 </head>
 
 <body>
   <!-- Application container. -->
-  <div id="main"></div>
-
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Broadcast</a>
+      </div>
+    </div>
+  </div>
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Broadcast yourself!</h1>
+      <p>This is a template for broadcasting.</p>
+      <p><a class="btn btn-primary btn-lg" role="button" href="https://github.com/gundla/broadcast">View on Github »</a></p>
+    </div>
+  </div>  
+  <div id="main" class="container"></div>
   <!-- Application source. -->
   <!-- build:[src] /source.min.js -->
   <script data-main="/static/app/main" src="/static/vendor/requirejs/require.js"></script>

@@ -1,70 +1,5 @@
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
-/* line 17, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  vertical-align: baseline;
-}
-
-/* line 22, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-html {
-  line-height: 1;
-}
-
-/* line 24, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-ol, ul {
-  list-style: none;
-}
-
-/* line 26, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-/* line 28, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-caption, th, td {
-  text-align: left;
-  font-weight: normal;
-  vertical-align: middle;
-}
-
-/* line 30, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-q, blockquote {
-  quotes: none;
-}
-/* line 103, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-q:before, q:after, blockquote:before, blockquote:after {
-  content: "";
-  content: none;
-}
-
-/* line 32, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-a img {
-  border: none;
-}
-
-/* line 116, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
-  display: block;
-}
-
 /*
  * reveal.js
  * http://lab.hakim.se/reveal-js
@@ -1837,8 +1772,8 @@ body {
  */
 @font-face {
   font-family: 'League Gothic';
-  src: url("/static/styles/css/font/league_gothic-webfont.eot");
-  src: url("/static/styles/css/font/league_gothic-webfont.eot?#iefix") format("embedded-opentype"), url("/static/styles/css/font/league_gothic-webfont.woff") format("woff"), url("/static/styles/css/font/league_gothic-webfont.ttf") format("truetype"), url("/static/styles/css/font/league_gothic-webfont.svg#LeagueGothicRegular") format("svg");
+  src: url("../../lib/font/league_gothic-webfont.eot");
+  src: url("../../lib/font/league_gothic-webfont.eot?#iefix") format("embedded-opentype"), url("../../lib/font/league_gothic-webfont.woff") format("woff"), url("../../lib/font/league_gothic-webfont.ttf") format("truetype"), url("../../lib/font/league_gothic-webfont.svg#LeagueGothicRegular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -1862,7 +1797,7 @@ body {
 .reveal {
   font-family: "Lato", sans-serif;
   font-size: 36px;
-  font-weight: 200;
+  font-weight: normal;
   letter-spacing: -0.02em;
   color: #eeeeee;
 }
@@ -2011,4 +1946,119 @@ body {
   -ms-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   -o-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+}
+
+/*********************************************
+ * SLIDE NUMBER
+ *********************************************/
+/* line 147, ../scss/modules/slides/_default-theme.scss */
+.reveal .slide-number {
+  color: #13daec;
+}
+
+/* line 7, ../scss/slides.scss */
+body {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+/* line 10, ../scss/slides.scss */
+.left {
+  float: left;
+}
+
+/* line 13, ../scss/slides.scss */
+.right {
+  float: right;
+}
+
+/* line 16, ../scss/slides.scss */
+.navbar {
+  height: auto;
+}
+
+/* line 19, ../scss/slides.scss */
+.navbar-inverse {
+  background: transparent;
+  border-color: transparent;
+}
+
+/* line 23, ../scss/slides.scss */
+.navbar-header {
+  float: none;
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 26, ../scss/slides.scss */
+.navbar-header .button {
+  height: 24px;
+  border-radius: 4px;
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  line-height: 24px;
+  padding: 0 12px;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+/* line 39, ../scss/slides.scss */
+.navbar-header .button.primary {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #2892c6), color-stop(100%, #2186b8));
+  background-image: -webkit-linear-gradient(#2892c6, #2186b8);
+  background-image: -moz-linear-gradient(#2892c6, #2186b8);
+  background-image: -o-linear-gradient(#2892c6, #2186b8);
+  background-image: linear-gradient(#2892c6, #2186b8);
+  background-color: #2186b8;
+}
+/* line 43, ../scss/slides.scss */
+.navbar-header .button.cancel {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #b3b3b3), color-stop(100%, #9a9a9a));
+  background-image: -webkit-linear-gradient(#b3b3b3, #9a9a9a);
+  background-image: -moz-linear-gradient(#b3b3b3, #9a9a9a);
+  background-image: -o-linear-gradient(#b3b3b3, #9a9a9a);
+  background-image: linear-gradient(#b3b3b3, #9a9a9a);
+  background-color: #9a9a9a;
+  color: #fff;
+}
+
+/* line 50, ../scss/slides.scss */
+#startBroadcasting {
+  float: right;
+  margin: 10px 0;
+}
+
+/* line 54, ../scss/slides.scss */
+.broadcastingDetails {
+  color: #999;
+}
+/* line 56, ../scss/slides.scss */
+.broadcastingDetails h4 {
+  margin: 4px 0;
+  text-align: right;
+  color: #b3b3b3;
+  font-size: 14px;
+}
+/* line 62, ../scss/slides.scss */
+.broadcastingDetails #stopBroadcasting {
+  float: right;
+}
+
+/* line 66, ../scss/slides.scss */
+#numberOfClients {
+  color: #fff;
+  font-size: 20px;
+  background-color: #b82186;
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
+  text-align: center;
+  line-height: 40px;
+  margin: 4px 8px;
 }

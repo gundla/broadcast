@@ -5,19 +5,15 @@
  */
 var config = module.exports = {
   prod: {
-          port                        : 8080
-          , logDirectory              : '/mnt/ephemeral/nodejs/logs'
+          port                        : 80
   }
   , qa: {
-          port                        : 8080
-          , logDirectory              : '/mnt/ephemeral/nodejs/logs'
+          port                        : 80
   }
   , dev: {
-          port                        : 8080
-          , logDirectory              : '/mnt/ephemeral/nodejs/logs'
+          port                        : 80
   }
   , local: {
           port                        : 4000
-          , logDirectory              : ''
   }
 }
